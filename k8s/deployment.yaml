@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: fareshare-frontend
-          image: 979667334110.dkr.ecr.ap-south-1.amazonaws.com/fareshare-frontend:v1
+          image: 979667334110.dkr.ecr.ap-south-1.amazonaws.com/fareshare-frontend:5847d71d38e29ee0341d503ea6a2805a52c8df70-8
           imagePullPolicy: Always
           ports:
             - containerPort: 80
