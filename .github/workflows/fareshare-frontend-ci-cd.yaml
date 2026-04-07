@@ -45,9 +45,9 @@ jobs:
           role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
       - uses: aws-actions/amazon-ecr-login@v1
-      - name: Configure Docker to use ECR credentials
-        run: |
-          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+      # - name: Configure Docker to use ECR credentials
+      #   run: |
+      #     aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
       - name: Build and push
         run: |
           TAG=${{ needs.checkout.outputs.commit }}-${{ github.run_number }}
