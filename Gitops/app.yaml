@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fareshare-frontend-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ritikjain16/Fare-share-frontend.git
+    targetRevision: master
+    path: k8s
+  destination:
+    server: https://30BF9AD5E0DD1F5A356E73E18120A641.gr7.ap-south-1.eks.amazonaws.com
+    namespace: fareshare
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
