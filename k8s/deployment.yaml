@@ -1,1 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fareshare-frontend-deployment
+  labels:
+    app: fareshare-frontend
+  namespace: fareshare
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fareshare-frontend
+  template:
+    metadata:
+      labels:
+        app: fareshare-frontend
 
+    spec:
+      containers:
+        - name: fareshare-frontend
+          image: 979667334110.dkr.ecr.ap-south-1.amazonaws.com/fareshare-frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          # env:
+          #   - name: VITE_BACKEND_URL
+          #     value: "http://mern-backend-service.mern-app.svc.cluster.local:5000"
